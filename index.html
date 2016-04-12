@@ -4,21 +4,61 @@
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="node_modules/handlebars/dist/handlebars.min.js"></script>
 </head>
   <body>
 
+   <div class="overlay"></div>
+   <div class="modale"></div>
+
     <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
 
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-
-          <div class="page-header">
-            <h1>Searchstagram</h1>
-          </div>
-
+        <div class="page-header">
+          <h1>Searchstagram</h1>
         </div>
-      </div>  
+        <div class="auth-container">
+          <h3>To start Searching, Please Log In!</h3>
+          <button class="btn btn-default auth">Login</button>
+        </div>
+
+        <div class="search-container">
+          <div class="tags"></div>
+          <form class="search-form">
+            <h3>Type in a Hashtag or Choose to search your own media and Click Search</h3>
+            <select class="kind form-control">
+              <option value="hashtag">Hashtag</option>
+              <option value="self">Your own media</option>
+            </select>
+            <div class="form-group">
+              <input type="text"
+                class="search-input form-control"
+                placeholder="Hashtag">
+              </input>
+            </div>
+            <button class="btn btn-primary search">Search</button>
+          </form>
+        </div>
+      </div>
     </div>
+
+    <div class="all-pics row">
+    </div>
+  
+  </div>
+
+    <script  id="img" type="text/x-handlebars-template">
+      <div data-tag="{{tag}}" class="col-md-4">
+        <img src="{{url}}">
+      </div>
+    </script>
+
+    <script id="tag" type="text/x-handlebars-template">
+      <button class="btn btn-tag" data-tag="{{tag}}">
+        <i class="fa fa-times" aria-hidden="true"></i> {{#if hash}}#{{/if}}{{tag}}
+      </button>
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
